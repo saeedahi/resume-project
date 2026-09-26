@@ -1,0 +1,307 @@
+/* ========================================
+   Article Detail Content
+   ======================================== */
+
+.article-detail {
+    margin-top: 120px;
+    margin-bottom: 80px;
+    padding: 40px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    box-shadow: 0 8px 30px var(--shadow);
+
+    direction: rtl;
+    text-align: right;
+
+    color: var(--text);
+    line-height: 2;
+    transition: all var(--transition);
+}
+
+
+/* عنوان اصلی مقاله */
+.article-detail h1 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: 30px;
+    color: var(--text);
+    line-height: 1.5;
+}
+
+
+/* تیترهای داخل مقاله */
+.article-detail h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 45px 0 20px;
+    color: var(--text);
+    position: relative;
+}
+
+
+.article-detail h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    margin-top: 10px;
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+
+.article-detail h3 {
+    font-size: 1.4rem;
+    margin: 35px 0 15px;
+    color: var(--text);
+}
+
+
+/* پاراگراف */
+.article-detail p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    line-height: 2;
+}
+
+
+/* لینک ها */
+.article-detail a {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.article-detail a:hover {
+    color: var(--primary-light);
+}
+
+
+/* لیست ها */
+.article-detail ul,
+.article-detail ol {
+    padding-right: 35px;
+    margin: 20px 0;
+}
+
+
+.article-detail li {
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+    line-height: 2;
+}
+
+
+/* جداکننده */
+.article-detail hr {
+    border: none;
+    height: 1px;
+    background: var(--border);
+    margin: 40px 0;
+}
+
+
+
+/* ========================================
+   Inline Code
+   ======================================== */
+
+.article-detail code {
+
+    direction: ltr;
+    unicode-bidi: embed;
+
+    background: rgba(59,130,246,0.12);
+    color: var(--primary-light);
+
+    padding: 3px 8px;
+    border-radius: 6px;
+
+    font-family:
+        "JetBrains Mono",
+        "Fira Code",
+        Consolas,
+        monospace;
+
+    font-size: 0.9em;
+}
+
+
+/* ========================================
+   Code Block
+   ======================================== */
+
+.article-detail pre {
+
+    direction: ltr;
+    text-align: left;
+
+    background: #020617;
+    color: #e2e8f0;
+
+    padding: 25px;
+
+    border-radius: 16px;
+
+    overflow-x: auto;
+
+    margin: 30px 0;
+
+    border: 1px solid var(--border);
+
+    font-family:
+        "JetBrains Mono",
+        "Fira Code",
+        Consolas,
+        monospace;
+
+    font-size: 0.9rem;
+
+    line-height: 1.8;
+}
+
+
+[data-theme="light"] .article-detail pre {
+
+    background: #0f172a;
+    color: #f8fafc;
+
+}
+
+
+/* جلوگیری از RTL شدن کد */
+.article-detail pre code {
+
+    direction: ltr;
+    text-align: left;
+
+    background: transparent;
+    color: inherit;
+
+    padding: 0;
+
+}
+
+
+/* ========================================
+   Images
+   ======================================== */
+
+.article-detail img {
+
+    max-width: 100%;
+    height: auto;
+
+    border-radius: 16px;
+
+    margin: 30px auto;
+
+    box-shadow: 0 10px 30px var(--shadow);
+}
+
+
+/* ========================================
+   Blockquote
+   ======================================== */
+
+.article-detail blockquote {
+
+    border-right: 4px solid var(--primary);
+
+    padding: 15px 25px;
+
+    margin: 30px 0;
+
+    background: rgba(59,130,246,0.08);
+
+    border-radius: 10px;
+
+    color: var(--text-secondary);
+
+}
+
+
+
+/* ========================================
+   Table
+   ======================================== */
+
+.article-detail table {
+
+    width:100%;
+
+    border-collapse: collapse;
+
+    margin:30px 0;
+
+}
+
+
+.article-detail th,
+.article-detail td {
+
+    border:1px solid var(--border);
+
+    padding:12px;
+
+    text-align:right;
+
+}
+
+
+.article-detail th {
+
+    background: rgba(59,130,246,0.1);
+
+    color:var(--text);
+
+}
+
+
+.article-detail td {
+
+    color:var(--text-secondary);
+
+}
+
+
+
+/* ========================================
+   Mobile
+   ======================================== */
+
+@media(max-width:768px){
+
+    .article-detail{
+
+        margin-top:90px;
+
+        padding:25px 18px;
+
+    }
+
+
+    .article-detail h1{
+
+        font-size:1.8rem;
+
+    }
+
+
+    .article-detail h2{
+
+        font-size:1.4rem;
+
+    }
+
+
+    .article-detail pre{
+
+        padding:15px;
+
+        font-size:0.8rem;
+
+    }
+
+}

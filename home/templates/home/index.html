@@ -1,0 +1,736 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    محمدسعید آهی | توسعه‌دهنده Backend Python و Django
+{% endblock %}
+
+{% block content %}
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <div class="hero-badge">
+                            <i class="fas fa-code"></i>
+                            در دسترس برای همکاری
+                        </div>
+
+                        <h1 class="hero-title">
+                            <span class="greeting">سلام، من</span>
+                            <span class="name">{{ user.get_full_name }}</span>
+                            <span class="typing-container">
+                                <span id="typing-text" class="typing-text"></span>
+                                <span class="cursor">|</span>
+                            </span>
+                        </h1>
+
+                        <p class="hero-description">
+                            {{ user.about_user }}
+                        </p>
+
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-primary">
+                                <i class="fas fa-eye"></i>
+                                مشاهده پروژه‌ها
+                            </a>
+                            <a href="#" class="btn btn-outline" download>
+                                <i class="fas fa-download"></i>
+                                دانلود رزومه
+                            </a>
+                            <a href="#contact" class="btn btn-secondary">
+                                <i class="fas fa-envelope"></i>
+                                تماس با من
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="hero-visual">
+                        <div class="profile-wrapper">
+                            <div class="profile-image">
+                                <img src="/static/img/IMG_9294%20copy.jpg" alt="محمدسعید آهی">
+                            </div>
+                            <div class="floating-cards">
+                                <div class="float-card card-1">
+                                    <i class="fab fa-python"></i>
+                                    <span>Python</span>
+                                </div>
+                                <div class="float-card card-2">
+                                    <i class="fab fa-python"></i>
+                                    <span>Django</span>
+                                </div>
+                                <div class="float-card card-3">
+                                    <i class="fas fa-database"></i>
+                                    <span>PostgreSQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">درباره من</span>
+                    <h2 class="section-title">آشنایی با من</h2>
+                    <p class="section-subtitle">توسعه‌دهنده Backend با اشتیاق به یادگیری و ساخت نرم‌افزارهای
+                        مقیاس‌پذیر</p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        {{ user.more_about_me|linebreaks }}
+                        <div class="about-stats">
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="2">0</span>
+                                <span class="stat-label">سال تجربه</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="15">0</span>
+                                <span class="stat-label">پروژه موفق</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-number" data-count="8">0</span>
+                                <span class="stat-label">مشتری راضی</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-image">
+                        <div class="image-wrapper">
+                            <img src="/static/img/AboutMe.png" alt="توسعه Backend">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">مهارت‌ها</span>
+                    <h2 class="section-title">تخصص‌های من</h2>
+                    <p class="section-subtitle">ابزارها و تکنولوژی‌هایی که با آنها کار می‌کنم</p>
+                </div>
+
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="category-title">Backend</h3>
+                        <div class="skills-list">
+                            {% for skill in skills %}
+                                <div class="skill-card">
+                                    <div class="skill-icon">
+                                        {% if skill.name == 'Python' %}
+                                            <i class="fab fa-python"></i>
+                                        {% elif skill.name == 'django' %}
+                                            <i class="fas fa-dragon"></i>
+                                        {% elif skill.name == 'PostgreSQL' or skill.name == 'SQLite3' %}
+                                            <i class="fas fa-database"></i>
+                                        {% else %}
+                                            <i class="fas fa-code"></i>
+                                        {% endif %}
+
+                                    </div>
+                                    <div class="skill-info">
+                                        <span class="skill-name">{{ skill.name }}</span>
+                                        <div class="skill-bar">
+                                            <div class="skill-progress" style="width: {{ skill.score }}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+
+
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fas fa-dragon"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">Django</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 85%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fas fa-code"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">Django REST Framework</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 80%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fas fa-database"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">PostgreSQL</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 85%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fas fa-database"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">SQLite</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 75%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fas fa-tasks"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">Celery</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 70%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fas fa-server"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">Redis</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 65%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3 class="category-title">ابزارها</h3>
+                        <div class="skills-list">
+                            {% for tool in tools %}
+                                <div class="skill-card">
+                                    <div class="skill-icon">
+                                        {% if tool.name == 'Git' %}
+                                            <i class="fab fa-git-alt"></i>
+                                        {% elif tool.name == 'GitHub' %}
+                                            <i class="fab fa-github"></i>
+                                        {% elif tool.name == 'Docker' %}
+                                            <i class="fab fa-docker"></i>
+                                        {% elif tool.name == 'Linux' %}
+                                            <i class="fab fa-linux"></i>
+                                        {% else %}
+                                            <i class="fas fa-code"></i>
+                                        {% endif %}
+                                    </div>
+                                    <div class="skill-info">
+                                        <span class="skill-name">{{ tool.name }}</span>
+                                        <div class="skill-bar">
+                                            <div class="skill-progress" style="width: {{ tool.score }}%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fab fa-git-alt"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">Git</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 90%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fab fa-github"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">GitHub</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 85%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fab fa-docker"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">Docker</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 70%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fab fa-linux"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">Linux</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 80%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                            {##}
+                            {#                            <div class="skill-card">#}
+                            {#                                <div class="skill-icon">#}
+                            {#                                    <i class="fas fa-code"></i>#}
+                            {#                                </div>#}
+                            {#                                <div class="skill-info">#}
+                            {#                                    <span class="skill-name">VS Code</span>#}
+                            {#                                    <div class="skill-bar">#}
+                            {#                                        <div class="skill-progress" style="width: 95%"></div>#}
+                            {#                                    </div>#}
+                            {#                                </div>#}
+                            {#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">پروژه‌ها</span>
+                    <h2 class="section-title">نمونه کارها</h2>
+                    <p class="section-subtitle">برخی از پروژه‌هایی که با Django و Python توسعه داده‌ام</p>
+                </div>
+
+                {% for project in projects %}
+                    <div class="projects-grid">
+                        <div class="project-card">
+                            <div class="project-image">
+                                <img src="{{ project.img.url }}" alt="{{ project.name }}">
+                                <div class="project-overlay">
+                                    <div class="project-links">
+                                        <a href="{{ project.github_url }}" class="btn btn-sm btn-primary">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a href="{{ project.url }}" class="btn btn-sm btn-primary">
+                                            <i class="fas fa-external-link-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <h3 class="project-title">{{ project.name }}</h3>
+                                <p class="project-description">
+                                    {{ project.description|linebreaks }}
+                                </p>
+                                <div class="project-tech">
+                                    {% for skill in project.skill.all %}
+                                        <span class="tech-tag">{{ skill }}</span>
+                                    {% endfor %}
+
+                                    {#                                    <span class="tech-tag">Python</span>#}
+                                    {#                                    <span class="tech-tag">Django</span>#}
+                                    {#                                    <span class="tech-tag">PostgreSQL</span>#}
+                                    {#                                    <span class="tech-tag">Redis</span>#}
+                                    {#                                    <span class="tech-tag">Celery</span>#}
+                                </div>
+                                <div class="project-actions">
+                                    <a href="{{ project.github_url }}" class="btn btn-sm btn-outline">
+                                        <i class="fab fa-github"></i>
+                                        کد منبع
+                                    </a>
+                                    <a href="{{ project.url }}" class="btn btn-sm btn-primary">
+                                        <i class="fas fa-eye"></i>
+                                        مشاهده پروژه
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Add more project cards -->
+                    </div>
+                {% endfor %}
+
+                {#                <div class="projects-grid">#}
+                {#                    <div class="project-card">#}
+                {#                        <div class="project-image">#}
+                {#                            <img src="assets/images/project-glaboo.jpg" alt="پروژه گلابو">#}
+                {#                            <div class="project-overlay">#}
+                {#                                <div class="project-links">#}
+                {#                                    <a href="#" class="btn btn-sm btn-primary">#}
+                {#                                        <i class="fab fa-github"></i>#}
+                {#                                    </a>#}
+                {#                                    <a href="#" class="btn btn-sm btn-primary">#}
+                {#                                        <i class="fas fa-external-link-alt"></i>#}
+                {#                                    </a>#}
+                {#                                </div>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                        <div class="project-content">#}
+                {#                            <h3 class="project-title">گلابو</h3>#}
+                {#                            <p class="project-description">#}
+                {#                                فروشگاه اینترنتی ساخته‌شده با Django دارای سیستم احراز هویت،#}
+                {#                                پنل مدیریت، سبد خرید، جستجو، دسته‌بندی محصولات، درگاه پرداخت،#}
+                {#                                ثبت نظرات و مدیریت محتوا.#}
+                {#                            </p>#}
+                {#                            <div class="project-tech">#}
+                {#                                <span class="tech-tag">Python</span>#}
+                {#                                <span class="tech-tag">Django</span>#}
+                {#                                <span class="tech-tag">PostgreSQL</span>#}
+                {#                                <span class="tech-tag">Redis</span>#}
+                {#                                <span class="tech-tag">Celery</span>#}
+                {#                            </div>#}
+                {#                            <div class="project-actions">#}
+                {#                                <a href="#" class="btn btn-sm btn-outline">#}
+                {#                                    <i class="fab fa-github"></i>#}
+                {#                                    کد منبع#}
+                {#                                </a>#}
+                {#                                <a href="#" class="btn btn-sm btn-primary">#}
+                {#                                    <i class="fas fa-eye"></i>#}
+                {#                                    مشاهده پروژه#}
+                {#                                </a>#}
+                {#                            </div>#}
+                {#                        </div>#}
+                {#                    </div>#}
+                {##}
+                {#                    <!-- Add more project cards -->#}
+                {#                </div>#}
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="timeline-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">مسیر یادگیری</span>
+                    <h2 class="section-title">تایم‌لاین</h2>
+                    <p class="section-subtitle">مسیر پیشرفت من در دنیای برنامه‌نویسی</p>
+                </div>
+
+                <div class="timeline">
+
+                    {% for timeline in timelines %}
+                        <div class="timeline-item">
+                            <div class="timeline-marker"></div>
+                            <div class="timeline-content">
+                                <span class="timeline-date">{{ timeline.start_date.year }}</span>
+                                <h3 class="timeline-title">{{ timeline.short_description }}</h3>
+                                <p class="timeline-description">
+                                    {{ timeline.descriptions }}
+                                </p>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2026</span>
+                            <h3 class="timeline-title">Docker</h3>
+                            <p class="timeline-description">
+                                کانتینری‌سازی برنامه‌های Django با Docker و Docker Compose
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="blog-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">وبلاگ</span>
+                    <h2 class="section-title">مقالات آموزشی</h2>
+                    <p class="section-subtitle">مطالب آموزشی در مورد Django و توسعه Backend</p>
+                </div>
+
+                <div class="blog-grid">
+                    {% for article in articles %}
+                        <article class="blog-card">
+                            <div class="blog-image">
+                                <img src="{{ article.image.url }}" alt="{{ article.title }}">
+                            </div>
+                            <div class="blog-content">
+                                <span class="blog-category">{{ article.category }}</span>
+                                <h3 class="blog-title">{{ article.title }}</h3>
+                                <p class="blog-excerpt">
+                                    {{ article.short_descriptions }}
+                                </p>
+                                <a href="{% url 'blog_detail' slug=article.slug %}" class="blog-link">
+                                    ادامه مطلب
+                                    <i class="fas fa-arrow-left"></i>
+                                </a>
+                            </div>
+                        </article>
+                    {% endfor %}
+
+                    {#                    <article class="blog-card">#}
+                    {#                        <div class="blog-image">#}
+                    {#                            <img src="assets/images/blog-auth.jpg" alt="Authentication در Django">#}
+                    {#                        </div>#}
+                    {#                        <div class="blog-content">#}
+                    {#                            <span class="blog-category">Django</span>#}
+                    {#                            <h3 class="blog-title">Authentication در Django</h3>#}
+                    {#                            <p class="blog-excerpt">#}
+                    {#                                آموزش کامل سیستم احراز هویت در Django از صفر تا صد#}
+                    {#                            </p>#}
+                    {#                            <a href="#" class="blog-link">#}
+                    {#                                ادامه مطلب#}
+                    {#                                <i class="fas fa-arrow-left"></i>#}
+                    {#                            </a>#}
+                    {#                        </div>#}
+                    {#                    </article>#}
+
+                    {#                    <article class="blog-card">#}
+                    {#                        <div class="blog-image">#}
+                    {#                            <img src="assets/images/blog-orm.jpg" alt="ORM چیست؟">#}
+                    {#                        </div>#}
+                    {#                        <div class="blog-content">#}
+                    {#                            <span class="blog-category">Django</span>#}
+                    {#                            <h3 class="blog-title">ORM چیست؟</h3>#}
+                    {#                            <p class="blog-excerpt">#}
+                    {#                                آشنایی با Object-Relational Mapping در Django و مزایای آن#}
+                    {#                            </p>#}
+                    {#                            <a href="#" class="blog-link">#}
+                    {#                                ادامه مطلب#}
+                    {#                                <i class="fas fa-arrow-left"></i>#}
+                    {#                            </a>#}
+                    {#                        </div>#}
+                    {#                    </article>#}
+                    {##}
+                    {#                    <article class="blog-card">#}
+                    {#                        <div class="blog-image">#}
+                    {#                            <img src="assets/images/blog-drf.jpg" alt="DRF چیست؟">#}
+                    {#                        </div>#}
+                    {#                        <div class="blog-content">#}
+                    {#                            <span class="blog-category">REST API</span>#}
+                    {#                            <h3 class="blog-title">DRF چیست؟</h3>#}
+                    {#                            <p class="blog-excerpt">#}
+                    {#                                معرفی Django REST Framework برای ساخت APIهای حرفه‌ای#}
+                    {#                            </p>#}
+                    {#                            <a href="#" class="blog-link">#}
+                    {#                                ادامه مطلب#}
+                    {#                                <i class="fas fa-arrow-left"></i>#}
+                    {#                            </a>#}
+                    {#                        </div>#}
+                    {#                    </article>#}
+                    {##}
+                    {#                    <article class="blog-card">#}
+                    {#                        <div class="blog-image">#}
+                    {#                            <img src="assets/images/blog-deploy.jpg" alt="Deploy پروژه Django">#}
+                    {#                        </div>#}
+                    {#                        <div class="blog-content">#}
+                    {#                            <span class="blog-category">DevOps</span>#}
+                    {#                            <h3 class="blog-title">Deploy پروژه Django</h3>#}
+                    {#                            <p class="blog-excerpt">#}
+                    {#                                راهنمای کامل استقرار پروژه‌های Django روی سرورهای لینوکسی#}
+                    {#                            </p>#}
+                    {#                            <a href="#" class="blog-link">#}
+                    {#                                ادامه مطلب#}
+                    {#                                <i class="fas fa-arrow-left"></i>#}
+                    {#                            </a>#}
+                    {#                        </div>#}
+                    {#                    </article>#}
+                    {##}
+                    {#                    <article class="blog-card">#}
+                    {#                        <div class="blog-image">#}
+                    {#                            <img src="assets/images/blog-docker.jpg" alt="Docker">#}
+                    {#                        </div>#}
+                    {#                        <div class="blog-content">#}
+                    {#                            <span class="blog-category">DevOps</span>#}
+                    {#                            <h3 class="blog-title">Docker</h3>#}
+                    {#                            <p class="blog-excerpt">#}
+                    {#                                کانتینری‌سازی برنامه‌های Django با Docker#}
+                    {#                            </p>#}
+                    {#                            <a href="#" class="blog-link">#}
+                    {#                                ادامه مطلب#}
+                    {#                                <i class="fas fa-arrow-left"></i>#}
+                    {#                            </a>#}
+                    {#                        </div>#}
+                    {#                    </article>#}
+                    {##}
+                    {#                    <article class="blog-card">#}
+                    {#                        <div class="blog-image">#}
+                    {#                            <img src="assets/images/blog-celery.jpg" alt="Celery">#}
+                    {#                        </div>#}
+                    {#                        <div class="blog-content">#}
+                    {#                            <span class="blog-category">Django</span>#}
+                    {#                            <h3 class="blog-title">Celery</h3>#}
+                    {#                            <p class="blog-excerpt">#}
+                    {#                                پردازش‌های ناهمگام در Django با Celery و Redis#}
+                    {#                            </p>#}
+                    {#                            <a href="#" class="blog-link">#}
+                    {#                                ادامه مطلب#}
+                    {#                                <i class="fas fa-arrow-left"></i>#}
+                    {#                            </a>#}
+                    {#                        </div>#}
+                    {#                    </article>#}
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">خدمات</span>
+                    <h2 class="section-title">خدمات من</h2>
+                    <p class="section-subtitle">خدماتی که می‌توانم به شما ارائه دهم</p>
+                </div>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 class="service-title">توسعه Backend</h3>
+                        <p class="service-description">
+                            طراحی و پیاده‌سازی بک‌اند حرفه‌ای با Python و Django
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-code-branch"></i>
+                        </div>
+                        <h3 class="service-title">طراحی REST API</h3>
+                        <p class="service-description">
+                            ساخت APIهای امن و مقیاس‌پذیر با Django REST Framework
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h3 class="service-title">توسعه فروشگاه اینترنتی</h3>
+                        <p class="service-description">
+                            ساخت فروشگاه‌های اینترنتی کامل با Django
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3 class="service-title">اتصال درگاه پرداخت</h3>
+                        <p class="service-description">
+                            یکپارچه‌سازی درگاه‌های پرداخت در پروژه‌های Django
+                        </p>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <h3 class="service-title">پنل مدیریت اختصاصی</h3>
+                        <p class="service-description">
+                            طراحی پنل‌های مدیریت پیشرفته با Django Admin
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">تماس با من</span>
+                    <h2 class="section-title">ارتباط با من</h2>
+                    <p class="section-subtitle">خوشحال می‌شوم از شما بشنوم</p>
+                </div>
+
+                <div class="contact-content">
+                    <div class="contact-form-wrapper">
+                        <form id="contactForm" class="contact-form" method="post" action="{% url 'home_page' %}">
+                            {% csrf_token %}
+                            {#                            {{ contact_us_form }}#}
+                            <div class="form-group">
+                                <label for="name">نام</label>
+                                {#                                <input type="text" id="name" name="name" placeholder="نام خود را وارد کنید" required>#}
+                                {{ contact_us_form.name }}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">ایمیل</label>
+                                {#                                <input type="email" id="email" name="email" placeholder="ایمیل خود را وارد کنید"#}
+                                {#                                       required>#}
+                                {{ contact_us_form.email }}
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">پیام</label>
+                                {{ contact_us_form.message }}
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-full">
+                                <i class="fas fa-paper-plane"></i>
+                                ارسال پیام
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="contact-social">
+                        <h3>راه‌های ارتباطی</h3>
+                        <div class="social-links">
+                            {% for social_link in social_links %}
+                                <a href="{{ social_link.link }}" class="social-link">
+                                    {% if social_link.name == 'GitHub' %}
+                                        <i class="fab fa-github"></i>
+                                    {% elif social_link.name == 'LinkedIn' %}
+                                        <i class="fab fa-linkedin-in"></i>
+                                    {% elif social_link.name == 'Telegram' %}
+                                        <i class="fab fa-telegram-plane"></i>
+                                    {% else %}
+                                        <i class="fas fa-envelope"></i>
+                                    {% endif %}
+
+                                    <span>{{ social_link.name }}</span>
+                                </a>
+                            {% endfor %}
+
+                            <a href="{{ user.email }}" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                                <span>Email</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    {% if messages %}
+        {% for message in messages %}
+            <script>
+                document.addEventListener("DOMContentLoaded", function () {
+                    showNotification("{{ message|escapejs }}", "{{ message.tags }}");
+                });
+            </script>
+        {% endfor %}
+    {% endif %}
+
+{% endblock %}

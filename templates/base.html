@@ -1,0 +1,101 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="رزومه حرفه‌ای محمدسعید آهی، توسعه‌دهنده Backend با تخصص Python و Django">
+    <meta name="keywords" content="Python, Django, Backend, Developer, Resume, محمدسعید آهی">
+    <meta name="author" content="Mohammad Saeed Ahi">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="محمدسعید آهی | توسعه‌دهنده Backend">
+    <meta property="og:description" content="رزومه حرفه‌ای توسعه‌دهنده Backend با تخصص Python و Django">
+    <meta property="og:type" content="website">
+
+    {% include 'header_references.html' %}
+</head>
+<body>
+<!-- Progress Bar -->
+<div id="progress-bar"></div>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+    <div class="container">
+        <div class="navbar-brand">
+            <a href="{% url 'home_page' %}"><img src="/static/img/ChatGPT%20Image%20Jul%2026,%202026,%2009_49_08%20AM.png"></a>
+        </div>
+
+        <ul class="navbar-menu" id="navbarMenu">
+            <li><a href="#hero" class="active">خانه</a></li>
+            <li><a href="#about">درباره من</a></li>
+            <li><a href="#skills">مهارت‌ها</a></li>
+            <li><a href="#projects">پروژه‌ها</a></li>
+            <li><a href="#blog">وبلاگ</a></li>
+            <li><a href="#services">خدمات</a></li>
+            <li><a href="#contact">تماس با من</a></li>
+        </ul>
+
+        <div class="navbar-actions">
+            <button id="themeToggle" class="theme-toggle" aria-label="تغییر تم">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="hamburger" id="hamburger" aria-label="منو">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+{% block content %}{% endblock %}
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>محمدسعید آهی</h3>
+                <p>Python • Django • DRF</p>
+            </div>
+
+            <div class="footer-social">
+                <a href="#" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" aria-label="Telegram">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="#" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+
+            <div class="footer-copy">
+                <p>&copy; 2026 محمدسعید آهی</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Back to Top -->
+<button id="backToTop" class="back-to-top" aria-label="بازگشت به بالا">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- JavaScript Files -->
+{% include 'footer_references.html' %}
+</body>
+</html>
